@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card'
 // import ListGroup from 'react-bootstrap/ListGroup'
 // import Form from 'react-bootstrap/Form'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 // import Button from 'react-bootstrap/Button '
 export class App extends Component {
 
@@ -36,40 +37,42 @@ handlelocation = (e)=>{
 
 handlesubmit =async(e)=>{
   e.preventDefault();
- 
- 
+ console.log("Hello");
+  // if (this.state.locationName.length === 0){
+  //   alert("error ,empyt field")
+  // }
 
 
 
-  console.log(this.state.locationName)
-  //https://eu1.locationiq.com/v1/search.php?key=pk.561c2e75bb62b8d4e116f288ece4f189&q=Amman&format=json
-  const url = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&q=${this.state.locationName}&format=json`;
-console.log(url);
+//   console.log(this.state.locationName)
+//   //https://eu1.locationiq.com/v1/search.php?key=pk.561c2e75bb62b8d4e116f288ece4f189&q=Amman&format=json
+//   const url = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&q=${this.state.locationName}&format=json`;
+// console.log(url);
 
-const response = await axios.get(url);
-console.log(response[0]);
-this.setState(
-  {
-    locationData:response.data[0]
+// const response = await axios.get(url);
+// console.log(response[0]);
+// this.setState(
+//   {
+//     locationData:response.data[0]
     
-  }
-)
-const url2 = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=${[this.state.locationData.lat,this.state.locationData.lon]}&zoom=17&format=jpg`
-console.log(url2);
-const responsetwo = await axios.get(url2);
-console.log(responsetwo);
+//   }
+// )
+// const url2 = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&center=${[this.state.locationData.lat,this.state.locationData.lon]}&zoom=17&format=jpg`
+// console.log(url2);
+// const responsetwo = await axios.get(url2);
+// console.log(responsetwo);
 
-this.setState(
-  {
-    imageData:responsetwo.request.responseURL
+// this.setState(
+//   {
+//     imageData:responsetwo.request.responseURL
     
-  }
-)
+//   }
+// )
 
-if (this.state.locationName.length === 0){
-  alert("error ,empyt field")
+
 }
-}
+
+
 
 
 
@@ -97,19 +100,7 @@ if (this.state.locationName.length === 0){
 
 </div> 
  
-{/* <Form onSubmit={this.handelSubmit}> */}
-          {/* <Form.Group onChange={this.handlelocation} className="mb-3" controlId="formBasicEmail">
-            <Form.Label>location Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter the location Name" />
 
-          </Form.Group>
-
-
-
-          <Button variant="primary" type="submit">
-          "explorer"
-          </Button>
-        </Form> */}
 
 
 
@@ -129,28 +120,6 @@ if (this.state.locationName.length === 0){
 </Card>
  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-{/* 
-< Card style={{ width: '18rem'  }}  >
-    <ListGroup variant="flush">
-  
-      <ListGroup.Item>{this.state.locationData.display_name}</ListGroup.Item>
-      <ListGroup.Item>{this.state.locationData.lat}</ListGroup.Item>
-      <ListGroup.Item>{this.state.locationData.lon}</ListGroup.Item>
-    </ListGroup>
-  </Card> */}
-  {/* <img src ={this.state.imageData}/> */}
 
 
     </>
